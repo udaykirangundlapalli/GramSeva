@@ -1,6 +1,6 @@
 <div align="center">
   <!-- Project banner. Make sure to add banner.png to your assets folder! -->
-  <img src="./assets/banner.png" alt="GramSeva Banner" width="800">
+  <img src="assets/banner.png" alt="GramSeva Banner" width="800">
   
   <h1>GramSeva Village Portal 🌾</h1>
   
@@ -16,7 +16,7 @@
 
 <br/>
 
-**GramSeva** bridges the gap between local administrators and residents by providing a transparent, easy-to-use platform for daily village activities, fund management, public grievance redressal, and e-governance.
+**GramSeva** is a next-generation village administration portal designed to bring digital empowerment to rural communities. It bridges the gap between local administrators (Gram Panchayat) and residents by providing a transparent, easy-to-use platform for daily village activities, fund management, public grievance redressal, and e-governance. By digitizing manual processes, GramSeva ensures greater accountability and easier access to government resources.
 
 ---
 
@@ -35,30 +35,31 @@
 
 ## 📸 Screenshots
 
-> **Note:** Please create an `assets` folder in your repository root and add your actual screenshots (`dashboard.png`, `complaints.png`, `ledger.png`, and `schemes.png`) to display them below.
+> *These screenshots showcase the core features of the GramSeva portal. You can automatically generate updated screenshots of your local build anytime by running `node take-screenshots.js`!*
 
 | Dashboard Overview | Grievance Redressal |
 | :---: | :---: |
-| [![Dashboard Overview Screenshot](./assets/dashboard.png)](./assets/dashboard.png) | [![Grievance Redressal Screenshot](./assets/complaints.png)](./assets/complaints.png) |
+| <img src="assets/dashboard.png" alt="Dashboard Overview" width="400" /> | <img src="assets/complaints.png" alt="Grievance Redressal" width="400" /> |
 
 | Youth Contribution Ledger | Government Schemes |
 | :---: | :---: |
-| [![Youth Contribution Ledger Screenshot](./assets/ledger.png)](./assets/ledger.png) | [![Government Schemes Tracker Screenshot](./assets/schemes.png)](./assets/schemes.png) |
+| <img src="assets/ledger.png" alt="Youth Contribution Ledger" width="400" /> | <img src="assets/schemes.png" alt="Government Schemes" width="400" /> |
 
 ---
 
-## �️ Tech Stack
+## 🛠️ Tech Stack
 
 **Frontend:**  
-!HTML5 !CSS3 !JavaScript
+* HTML5, CSS3, Vanilla JavaScript (ES6+)
 
 **Backend & Automation:**  
-!NodeJS !Express.js !Puppeteer
+* Node.js, Express.js
+* Puppeteer (Automated Headless Web Scraper)
 
 **Additional Libraries & Tools:**
-- **Storage:** Browser LocalStorage (Firebase Firestore ready)
-- **Charts:** Chart.js
-- **Icons & PDFs:** Lucide Icons, jsPDF
+* **Storage:** Browser LocalStorage (Ready for Firebase Firestore integration)
+* **Charts:** Chart.js for financial data visualization
+* **Icons & Export:** Lucide Icons, jsPDF for downloading reports
 
 ---
 
