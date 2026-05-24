@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#031305" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#5e789a" media="(prefers-color-scheme: light)">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>GramSeva - Village Administration & Transparency Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Global Skeleton Loader -->
+  <div id="global-loader" class="global-loader skeleton-wrapper">
+    <div class="skeleton-sidebar hidden-mobile"></div>
+    <div class="skeleton-main">
+      <div class="skeleton-header"></div>
+      <div class="skeleton-grid">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-container">
+
+    <!-- Background blur overlay for expanded mobile/tablet sidebar -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <!-- Desktop Sidebar Navigation -->
+    <aside class="sidebar">
+      <div>
+        <div class="logo-section" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+          <a href="index.html" class="logo-branding" style="display: flex; align-items: center; gap: 12px; text-decoration: none;" title="Return to Homepage">
+            <div class="logo-icon">
+              <i data-lucide="sprout"></i>
+            </div>
+            <span class="logo-text">GramSeva</span>
+          </a>
+          <button id="sidebar-toggle-btn" class="sidebar-toggle-btn" title="Toggle Sidebar">
+            <i data-lucide="chevron-left"></i>
+          </button>
+        </div>
+
+        <nav>
+          <ul class="nav-links">
+            <li class="nav-item active" data-view="news">
+              <button><i data-lucide="home"></i> <span data-i18n="nav_news">Village News & Notices</span></button>
+            </li>
+            <li class="nav-item" data-view="schemes">
+              <button><i data-lucide="file-text"></i> <span data-i18n="nav_schemes">Government Schemes</span></button>
+            </li>
+            <li class="nav-item" data-view="utility">
+              <button><i data-lucide="activity"></i> <span data-i18n="nav_utility">Water & Electricity</span></button>
+            </li>
+            <li class="nav-item" data-view="gallery">
+              <button><i data-lucide="image"></i> <span data-i18n="nav_gallery">Culture & Gallery</span></button>
+            </li>
+            <li class="nav-item" data-view="ledger">
+              <button><i data-lucide="coins"></i> <span data-i18n="nav_ledger">Youth Contribution Ledger</span></button>
+            </li>
+            <li class="nav-item" data-view="payment">
+              <button><i data-lucide="credit-card"></i> <span data-i18n="nav_pay">Payment Gateway</span></button>
+            </li>
+            <li class="nav-item" data-view="complaints">
+              <button><i data-lucide="alert-circle"></i> <span data-i18n="nav_grievance">Grievance Box</span></button>
+            </li>
+            <li class="nav-item" data-view="contacts">
+              <button><i data-lucide="phone"></i> <span data-i18n="nav_contacts">Emergency Directory</span></button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-role-card">
+          <div class="role-card-content">
+            <i data-lucide="shield" id="sidebar-role-icon"></i>
+            <div class="role-card-info">
+              <span class="role-card-sub">Role</span>
+              <span id="sidebar-role-label" class="role-card-name">Resident</span>
+            </div>
+          </div>
+          <button id="sidebar-role-switch-btn" class="role-card-btn" title="Switch User Role">
+            Login
+          </button>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%;">
+          <button class="theme-switch-btn" id="theme-toggle" title="Toggle Light/Dark Theme" style="flex-grow: 1;">
+            <span id="theme-icon" style="font-size: 1.2rem;">☀️</span>
+          </button>
+          <div class="sidebar-footer-text" style="font-size: 11px; color: var(--text-muted); font-weight: 600; text-align: right; flex-shrink: 0;">
+            GramSeva &copy; 2026
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Mobile Swipe Indicators -->
+    <div class="swipe-indicators md:hidden">
+      <div class="dot active" data-target="news"></div>
+      <div class="dot" data-target="schemes"></div>
+      <div class="dot" data-target="utility"></div>
+      <div class="dot" data-target="gallery"></div>
+      <div class="dot" data-target="ledger"></div>
+      <div class="dot" data-target="payment"></div>
+      <div class="dot" data-target="complaints"></div>
+      <div class="dot" data-target="contacts"></div>
+    </div>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav class="mobile-nav">
+      <button class="mobile-nav-item active" data-view="news">
+        <i data-lucide="home"></i>
+        <span>Home</span>
+      </button>
+      <button class="mobile-nav-item" data-view="schemes">
+        <i data-lucide="file-text"></i>
+        <span>Schemes</span>
+      </button>
+      <button class="mobile-nav-item" data-view="utility">
+        <i data-lucide="activity"></i>
+        <span>Updates</span>
+      </button>
+      <button class="mobile-nav-item" data-view="gallery">
+        <i data-lucide="image"></i>
+        <span>Gallery</span>
+      </button>
+      <button class="mobile-nav-item" data-view="ledger">
+        <i data-lucide="coins"></i>
+        <span>Ledger</span>
+      </button>
+      <button class="mobile-nav-item" data-view="payment">
+        <i data-lucide="credit-card"></i>
+        <span>Pay</span>
+      </button>
+      <button class="mobile-nav-item" data-view="complaints">
+        <i data-lucide="alert-circle"></i>
+        <span>Grievance</span>
+      </button>
+      <button class="mobile-nav-item" data-view="contacts">
+        <i data-lucide="phone"></i>
+        <span>Contacts</span>
+      </button>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+      <!-- Page Top Header Bar -->
+      <header class="page-header">
+        <div class="page-title-area">
+          <h1 id="main-view-title">Village News & Notices</h1>
+          <p id="main-view-subtitle">Announcements, newsletters, and general public notifications for villagers</p>
+        </div>
+        
+        <!-- Global Search Bar -->
+        <div class="global-search hidden-mobile" style="flex-grow: 1; max-width: 400px; position: relative; margin: 0 20px;">
+          <input type="text" id="global-search-input" class="form-control" placeholder="Search News, Schemes, or Complaints..." style="padding-left: 36px; padding-top: 10px; padding-bottom: 10px; border-radius: 999px;">
+          <i data-lucide="search" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--text-muted);"></i>
+        </div>
+
+        <div class="header-actions">
+          <button class="role-switch-btn" id="lang-toggle-btn" title="Switch Language">
+            <i data-lucide="languages"></i>
+            <span id="lang-label" data-i18n="lang_lbl">EN</span>
+          </button>
+          <button class="role-switch-btn" id="header-role-btn" title="Switch User Role">
+            <i data-lucide="shield" id="header-role-icon"></i>
+            <span id="header-role-label">Resident</span>
+          </button>
+          <button class="theme-switch-btn md:hidden" id="theme-toggle-mobile" title="Toggle Theme">
+            <span id="theme-icon-mobile" style="font-size: 1.2rem;">☀️</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- View 1: News & Notices (Home) -->
+      <section id="news-view" class="view-section active animate-fade">
+        <!-- Quick stats for general view -->
+        <div class="stats-grid">
+          <div class="glass-card stat-card">
+            <div class="stat-icon theme-primary"><i data-lucide="rss"></i></div>
+            <div class="stat-info">
+              <span class="stat-title">News Updates</span>
+              <span class="stat-value" id="stat-news-count">3 Active</span>
+              <span class="stat-subtitle">village stories online</span>
+            </div>
+          </div>
+          <div class="glass-card stat-card">
+            <div class="stat-icon theme-danger"><i data-lucide="megaphone"></i></div>
+            <div class="stat-info">
+              <span class="stat-title">Urgent Alerts</span>
+              <span class="stat-value" id="stat-alerts-count">2 Active</span>
+              <span class="stat-subtitle">notices on billboard</span>
+            </div>
+          </div>
+          <div class="glass-card stat-card">
+            <div class="stat-icon theme-secondary"><i data-lucide="droplet"></i></div>
+            <div class="stat-info">
+              <span class="stat-title">Water Status</span>
+              <span class="stat-value">Active</span>
+              <span class="stat-subtitle">next supply 6:00 PM</span>
+            </div>
+          </div>
+          <div class="glass-card stat-card">
+            <div class="stat-icon theme-accent"><i data-lucide="zap"></i></div>
+            <div class="stat-info">
+              <span class="stat-title">Grid Voltage</span>
+              <span class="stat-value">230V</span>
+              <span class="stat-subtitle">supply fully stabilized</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="news-layout">
+          <!-- News Column -->
+          <div class="glass-card">
+            <h2 class="section-card-title" style="justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+              <span style="display: flex; align-items: center; gap: 10px;">
+                <i data-lucide="rss" class="text-primary"></i> <span data-i18n="village_news_feed">Village News Feed</span>
+              </span>
+              <div style="display: flex; gap: 8px;">
+                <button id="clear-all-news-btn" class="btn btn-secondary admin-only"
+                  style="padding: 6px 12px; font-size: 11px;" title="Clear all news">
+                  <i data-lucide="trash-2" style="width: 12px; height: 12px;"></i> Clear All
+                </button>
+                <button id="add-news-btn" class="btn btn-secondary admin-only"
+                  style="padding: 6px 12px; font-size: 11px;">
+                  <i data-lucide="plus" style="width: 12px; height: 12px;"></i> Add News
+                </button>
+              </div>
+            </h2>
+
+            <!-- Form to add news, hidden by default -->
+            <div id="add-news-form-container"
+              style="display: none; border-bottom: 1px solid var(--border-color); padding-bottom: 16px; margin-bottom: 16px;"
+              class="animate-fade admin-only">
+              <form id="news-addition-form">
+                <div class="form-group">
+                  <label class="form-label">News Title</label>
+                  <input type="text" id="news-title" class="form-control" placeholder="e.g. New Water Tank Approved"
+                    required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Category</label>
+                  <select id="news-category" class="form-control" required>
+                    <option value="Infrastructure">Infrastructure</option>
+                    <option value="Agriculture">Agriculture</option>
+                    <option value="Education">Education</option>
+                    <option value="Health">Health</option>
+                    <option value="General">General</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">News Description</label>
+                  <textarea id="news-desc" class="form-control" rows="3"
+                    placeholder="Provide full details of the update..." required></textarea>
+                </div>
+                <div style="display: flex; gap: 8px; justify-content: flex-end;">
+                  <button type="button" id="cancel-news-btn" class="btn btn-secondary"
+                    style="padding: 6px 12px; font-size: 11px;">Cancel</button>
+                  <button type="submit" class="btn btn-primary" style="padding: 6px 12px; font-size: 11px;">Save
+                    News</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="news-grid" id="news-feed-container">
+              <!-- Rendered Dynamically -->
+            </div>
+          </div>
+
+          <!-- Public Notices Column -->
+          <div class="glass-card">
+            <h2 class="section-card-title" style="justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+              <span style="display: flex; align-items: center; gap: 10px;">
+                <i data-lucide="megaphone" class="text-danger"></i> <span data-i18n="public_billboard">Public Billboard</span>
+              </span>
+              <div style="display: flex; gap: 8px;">
+                <button id="clear-all-notices-btn" class="btn btn-secondary admin-only"
+                  style="padding: 6px 12px; font-size: 11px;" title="Clear all notices">
+                  <i data-lucide="trash-2" style="width: 12px; height: 12px;"></i> Clear All
+                </button>
+                <button id="add-notice-btn" class="btn btn-secondary admin-only"
+                  style="padding: 6px 12px; font-size: 11px;">
+                  <i data-lucide="plus" style="width: 12px; height: 12px;"></i> Add Notice
+                </button>
+              </div>
+            </h2>
+
+            <!-- Form to add notice, hidden by default -->
+            <div id="add-notice-form-container"
+              style="display: none; border-bottom: 1px solid var(--border-color); padding-bottom: 16px; margin-bottom: 16px;"
+              class="animate-fade admin-only">
+              <form id="notice-addition-form">
+                <div class="form-group">
+                  <label class="form-label">Notice Title</label>
+                  <input type="text" id="notice-title" class="form-control" placeholder="e.g. Vaccination Drive"
+                    required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Urgency Level</label>
+                  <select id="notice-type" class="form-control" required>
+                    <option value="info">Info (Standard)</option>
+                    <option value="warning">Warning (Medium)</option>
+                    <option value="high">High Alert (Urgent)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Notice Description</label>
+                  <textarea id="notice-desc" class="form-control" rows="3"
+                    placeholder="Provide full details of the notice..." required></textarea>
+                </div>
+                <div style="display: flex; gap: 8px; justify-content: flex-end;">
+                  <button type="button" id="cancel-notice-btn" class="btn btn-secondary"
+                    style="padding: 6px 12px; font-size: 11px;">Cancel</button>
+                  <button type="submit" class="btn btn-primary" style="padding: 6px 12px; font-size: 11px;">Save
+                    Notice</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="notices-list" id="notices-board-container">
+              <!-- Rendered Dynamically -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- View 2: Government Schemes -->
+      <section id="schemes-view" class="view-section animate-fade">
+        <div class="glass-card">
+          <div class="section-card-title" style="justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <i data-lucide="file-text" class="text-primary"></i>
+              <h2 data-i18n="welfare_schemes">Welfare Schemes & Benefits Finder</h2>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+              <button id="add-scheme-btn" class="btn btn-primary admin-only"
+                style="padding: 8px 16px; font-size: 13px;">
+                <i data-lucide="plus" style="width: 14px; height: 14px;"></i> Add Scheme
+              </button>
+              <!-- Search bar -->
+              <div style="position: relative; width: 100%; max-width: 250px;">
+                <input type="text" id="scheme-search" class="form-control" placeholder="Search schemes..."
+                  style="padding-left: 36px; padding-top: 8px; padding-bottom: 8px;">
+                <i data-lucide="search"
+                  style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; color: var(--text-muted);"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form to add scheme, hidden by default -->
+          <div id="add-scheme-form-container"
+            style="display: none; border-bottom: 1px solid var(--border-color); padding-bottom: 16px; margin-bottom: 16px;"
+            class="animate-fade admin-only">
+            <form id="scheme-addition-form">
+              <div class="form-group">
+                <label class="form-label">Scheme Title</label>
+                <input type="text" id="scheme-title" class="form-control"
+                  placeholder="e.g. Pradhan Mantri Kisan Samman Nidhi" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Ministry / Department Name</label>
+                <input type="text" id="scheme-dept" class="form-control" placeholder="e.g. Ministry of Agriculture"
+                  required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Financial & Social Benefits</label>
+                <textarea id="scheme-benefit" class="form-control" rows="2" placeholder="Describe the benefit..."
+                  required></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Eligibility Criteria</label>
+                <textarea id="scheme-eligibility" class="form-control" rows="2" placeholder="Who is eligible..."
+                  required></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Required Documentation</label>
+                <textarea id="scheme-docs" class="form-control" rows="2" placeholder="List required documents..."
+                  required></textarea>
+              </div>
+              <div style="display: flex; gap: 8px; justify-content: flex-end;">
+                <button type="button" id="cancel-scheme-btn" class="btn btn-secondary"
+                  style="padding: 6px 12px; font-size: 11px;">Cancel</button>
+                <button type="submit" class="btn btn-primary" style="padding: 6px 12px; font-size: 11px;">Save
+                  Scheme</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="schemes-grid" id="schemes-accordion-container">
+            <!-- Rendered Dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- View 3: Water & Electricity Updates -->
+      <section id="utility-view" class="view-section animate-fade">
+        <div class="utilities-grid">
+
+          <!-- Water Supply Grid -->
+          <div class="glass-card utility-card">
+            <div class="utility-status-header">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="stat-icon theme-secondary" style="width:36px; height:36px; border-radius: 8px;"><i
+                    data-lucide="droplet"></i></div>
+                <h3 style="font-weight: 700;">Water Supply Schedule</h3>
+              </div>
+              <div class="utility-status-glow" id="water-status-dot"></div>
+            </div>
+
+            <div class="utility-info-row">
+              <span>Current Status</span>
+              <span id="water-current-status" class="text-primary">Active (Morning Shift)</span>
+            </div>
+            <div class="utility-info-row">
+              <span>Daily Supply Hours</span>
+              <span>6:00 AM - 8:00 AM &amp; 6:00 PM - 8:00 PM</span>
+            </div>
+            <div class="utility-info-row">
+              <span>Next Scheduled Supply</span>
+              <span>Today at 6:00 PM</span>
+            </div>
+            <div class="utility-info-row">
+              <span>Water Treatment Quality</span>
+              <span class="text-primary">Safe (PH 7.2)</span>
+            </div>
+            <div class="utility-info-row">
+              <span>Maintenance Alert</span>
+              <span>None reported for this week</span>
+            </div>
+
+            <!-- Quick Report Button -->
+            <button class="btn btn-secondary quick-report-btn" data-category="Water"
+              style="width: 100%; margin-top: 16px; justify-content: center; gap: 8px;">
+              <i data-lucide="alert-triangle" style="color: var(--danger); width: 14px; height: 14px;"></i> Report Water
+              Leak / Issue
+            </button>
+          </div>
+
+          <!-- Electricity Power Grid -->
+          <div class="glass-card utility-card">
+            <div class="utility-status-header">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="stat-icon theme-accent" style="width:36px; height:36px; border-radius: 8px;"><i
+                    data-lucide="zap"></i></div>
+                <h3 style="font-weight: 700;">Electricity Grid status</h3>
+              </div>
+              <div class="utility-status-glow" id="power-status-dot"></div>
+            </div>
+
+            <div class="utility-info-row">
+              <span>Current Status</span>
+              <span id="power-current-status" class="text-primary">Active (Line Normal)</span>
+            </div>
+            <div class="utility-info-row">
+              <span>Scheduled Cuts Today</span>
+              <span>2:00 PM - 3:30 PM (Line Maintenance)</span>
+            </div>
+            <div class="utility-info-row">
+              <span>Average Voltage</span>
+              <span>230 V (Stabilized)</span>
+            </div>
+            <div class="utility-info-row">
+              <span>Substation Contact</span>
+              <span>1912 (State Power Grid)</span>
+            </div>
+            <div class="utility-info-row">
+              <span>Alternate Backups</span>
+              <span>Panchayat Solar Grid Active</span>
+            </div>
+
+            <!-- Quick Report Button -->
+            <button class="btn btn-secondary quick-report-btn" data-category="Electricity"
+              style="width: 100%; margin-top: 16px; justify-content: center; gap: 8px;">
+              <i data-lucide="alert-triangle" style="color: var(--danger); width: 14px; height: 14px;"></i> Report Power
+              Outage / Spark
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- View 4: Culture & Gallery -->
+      <section id="gallery-view" class="view-section animate-fade">
+        <div class="glass-card">
+          <div class="gallery-control-bar border-b border-white/5 pb-4 mb-6">
+            <div>
+              <h2 class="section-card-title" style="border:none; padding:0; margin:0;">
+                <i data-lucide="image" class="text-primary"></i> <span data-i18n="nav_gallery">Village Gallery & Cultural Archives</span>
+              </h2>
+              <p style="font-size:12px; color:var(--text-secondary); margin-top:2px;" data-i18n="sub_gallery">
+                Highlights from recent Pujas, festivals, and village scenery uploaded by residents.
+              </p>
+            </div>
+
+            <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+              <!-- Photo Filter Dropdown -->
+              <select id="gallery-filter" class="form-control" style="width: auto; min-width: 140px; padding: 8px 12px; font-size: 13px;">
+                <option value="All">All Photos</option>
+                <option value="Festival">Festivals</option>
+                <option value="Scenery">Scenery</option>
+                <option value="Development">Development</option>
+                <option value="Culture">Culture</option>
+                <option value="Upload">Uploads</option>
+              </select>
+              
+              <!-- Styled upload button -->
+              <label class="btn btn-primary admin-only" style="margin: 0; cursor: pointer; padding: 8px 16px; font-size: 13px;">
+                <i data-lucide="upload-cloud" style="width: 14px; height: 14px;"></i>
+                Upload Photo
+                <input type="file" id="gallery-image-uploader" class="file-upload-input" accept="image/*" multiple>
+              </label>
+            </div>
+          </div>
+
+          <div class="gallery-grid" id="gallery-images-container">
+            <!-- Dynamically Rendered -->
+          </div>
+        </div>
+      </section>
+
+      <!-- View 5: Youth Monthly Contribution Ledger -->
+      <section id="ledger-view" class="view-section animate-fade">
+
+        <!-- Financial Statistics Counters -->
+        <div class="stats-grid">
+          <div class="glass-card stat-card">
+            <div class="stat-icon theme-primary"><i data-lucide="coins"></i></div>
+            <div class="stat-info">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="stat-title">Total Funds Collected</span>
+                <button id="edit-base-funds-btn" class="admin-only" style="background: transparent; border: none; color: var(--text-muted); cursor: pointer; padding: 0; transition: color 0.2s ease;" title="Modify Base Funds">
+                  <i data-lucide="edit-2" style="width: 12px; height: 12px;"></i>
+                </button>
+              </div>
+              <span class="stat-value" id="ledger-total-funds">₹45,600</span>
+              <span class="stat-subtitle">for development projects</span>
+            </div>
+          </div>
+          <div class="glass-card stat-card">
+            <div class="stat-icon theme-secondary"><i data-lucide="users-round"></i></div>
+            <div class="stat-info">
+              <span class="stat-title">Active Youth Members</span>
+              <span class="stat-value" id="ledger-member-count">38 Persons</span>
+              <span class="stat-subtitle">monthly ₹200 contribution</span>
+            </div>
+          </div>
+          <div class="glass-card stat-card" style="flex-direction: column; align-items: flex-start; gap: 12px;">
+            <div style="display: flex; align-items: center; gap: 16px; width: 100%;">
+              <div class="stat-icon theme-accent"><i data-lucide="award"></i></div>
+              <div class="stat-info">
+                <span class="stat-title">Month Compliance</span>
+                <span class="stat-value" id="ledger-compliance-pct">92%</span>
+                <span class="stat-subtitle">current month paid ratio</span>
+              </div>
+            </div>
+            <div
+              style="width: 100%; background: rgba(255, 255, 255, 0.05); height: 6px; border-radius: 3px; overflow: hidden; margin-top: 4px;">
+              <div id="ledger-compliance-bar"
+                style="width: 92%; height: 100%; background: linear-gradient(90deg, var(--accent), #f59e0b); border-radius: 3px; transition: width 0.4s ease;">
+              </div>
+            </div>
+          </div>
+          <div class="glass-card stat-card">
+            <div class="stat-icon theme-danger"><i data-lucide="landmark"></i></div>
+            <div class="stat-info">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="stat-title" id="ledger-festival-title">Net Bank Balance</span>
+                <button id="auto-calc-bank-btn" class="admin-only" style="background: transparent; border: none; color: var(--text-muted); cursor: pointer; padding: 0; transition: color 0.2s ease;" title="Auto-Calculate Balance">
+                  <i data-lucide="calculator" style="width: 12px; height: 12px;"></i>
+                </button>
+                <button id="edit-bank-btn" class="admin-only" style="background: transparent; border: none; color: var(--text-muted); cursor: pointer; padding: 0; transition: color 0.2s ease;" title="Manual Override">
+                  <i data-lucide="edit-2" style="width: 12px; height: 12px;"></i>
+                </button>
+              </div>
+              <span class="stat-value" id="ledger-festival-value">₹12,300</span>
+              <span class="stat-subtitle" id="ledger-festival-subtitle">Total Expenses: ₹24,500</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3-Month Compliance Graph -->
+        <div class="glass-card" style="margin-bottom: 24px;">
+          <h3 class="section-card-title" style="margin-bottom: 12px; border-bottom: none; padding-bottom: 0;">
+            <i data-lucide="line-chart" class="text-primary"></i> Monthly Compliance Trends
+          </h3>
+          <div style="height: 220px; width: 100%;">
+            <canvas id="complianceChart"></canvas>
+          </div>
+        </div>
+
+        <div class="ledger-layout">
+
+          <!-- Left Column: Log Payment & Pooja Details -->
+          <div class="flex flex-col gap-6">
+            <!-- Log Contribution Form -->
+            <div class="glass-card admin-only">
+              <h2 class="section-card-title"><i data-lucide="plus-circle" class="text-primary"></i> Log Monthly ₹200
+                payment</h2>
+              <form id="ledger-payment-form">
+                <div class="form-group">
+                  <label class="form-label">Resident Contributor Name</label>
+                  <input type="text" id="contrib-name" class="form-control" placeholder="Enter name (e.g. Ramesh Kumar)"
+                    required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Profession / Job Role</label>
+                  <input type="text" id="contrib-profession" class="form-control"
+                    placeholder="Enter job (e.g. Software Engineer, Clerk)" required>
+                </div>
+
+              <div class="grid-form">
+                  <div class="form-group">
+                    <label class="form-label">Contribution Month</label>
+                    <select id="contrib-month" class="form-control" required>
+                      <!-- Dynamically populated -->
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Amount (INR)</label>
+                    <input type="number" id="contrib-amount" class="form-control" value="200" disabled>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary"
+                  style="width: 100%; justify-content: center; margin-top: 12px;">
+                  <i data-lucide="wallet"></i> Record Contribution
+                </button>
+              </form>
+            </div>
+
+            <!-- Recent Expenses & Repairs -->
+            <div class="glass-card">
+              <h2 class="section-card-title" style="justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+                <span style="display: flex; align-items: center; gap: 10px;">
+                  <i data-lucide="landmark" class="text-accent"></i>
+                  <span>Expense History (Festivals &amp; Repairs)</span>
+                </span>
+                <button id="add-pooja-btn" class="btn btn-secondary admin-only"
+                  style="padding: 6px 12px; font-size: 11px;">
+                  <i data-lucide="plus" style="width: 12px; height: 12px;"></i> Add Expense
+                </button>
+              </h2>
+
+              <!-- Form to add new expense, hidden by default -->
+              <div id="add-pooja-form-container"
+                style="display: none; border-bottom: 1px solid var(--border-color); padding-bottom: 16px; margin-bottom: 16px;"
+                class="animate-fade admin-only">
+                <form id="pooja-budget-form">
+                  <input type="hidden" id="pooja-id" value="">
+                  <div class="form-group">
+                    <label class="form-label">Expense Title</label>
+                    <input type="text" id="pooja-title" class="form-control"
+                      placeholder="e.g. Ganesh Chaturthi or Water Pump Repair" required>
+                  </div>
+                  <div class="grid-form">
+                    <div class="form-group">
+                      <label class="form-label">Category</label>
+                      <select id="pooja-category" class="form-control" required>
+                        <option value="Festival/Pooja">Festival / Pooja</option>
+                        <option value="Utility Repair">Utility / Repair</option>
+                        <option value="Other">Other Expense</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Total Amount Spent (₹)</label>
+                      <input type="number" id="pooja-spent" class="form-control" placeholder="e.g. 15000" min="0" inputmode="numeric" pattern="[0-9]*" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Expense Breakdown Description</label>
+                    <textarea id="pooja-desc" class="form-control" rows="2"
+                      placeholder="e.g. Lights: ₹5,000, Flowers: ₹3,000, Prasad: ₹7,000" required></textarea>
+                  </div>
+                  <div style="display: flex; gap: 8px; justify-content: flex-end;">
+                    <button type="button" id="cancel-pooja-btn" class="btn btn-secondary"
+                      style="padding: 6px 12px; font-size: 11px;">Cancel</button>
+                    <button type="submit" class="btn btn-primary" style="padding: 6px 12px; font-size: 11px;">Save
+                      Expense</button>
+                  </div>
+                </form>
+              </div>
+
+              <div class="notices-list" id="pooja-allocations-container">
+                <!-- Rendered Dynamically -->
+              </div>
+              <button id="toggle-expenses-btn" class="btn btn-secondary" style="width: 100%; justify-content: center; margin-top: 16px; display: none; font-size: 11px; padding: 6px 12px;">
+                View All Expenses
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Column: Contribution Registry list -->
+          <div class="glass-card flex flex-col">
+            <h2 class="section-card-title" style="justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+              <span style="display: flex; align-items: center; gap: 10px;">
+                <i data-lucide="table" class="text-secondary"></i>
+                <span>Youth Contribution Ledger</span>
+              </span>
+              <!-- Buttons for adding member and resetting database -->
+              <div style="display: flex; gap: 8px;">
+                <button id="add-ledger-member-btn" class="btn btn-primary admin-only"
+                  style="padding: 6px 12px; font-size: 11px;">
+                  <i data-lucide="plus-circle" style="width: 12px; height: 12px;"></i> Add Person
+                </button>
+                <button id="print-ledger-btn" class="btn btn-secondary admin-only"
+                  style="padding: 6px 12px; font-size: 11px;" title="Print ledger table">
+                  <i data-lucide="printer" style="width: 12px; height: 12px;"></i> Print
+                </button>
+                <button id="export-ledger-btn" class="btn btn-secondary admin-only"
+                  style="padding: 6px 12px; font-size: 11px;" title="Export ledger to CSV">
+                  <i data-lucide="download" style="width: 12px; height: 12px;"></i> Export CSV
+                </button>
+                <button id="reset-ledger-btn" class="btn btn-secondary admin-only"
+                  style="padding: 6px 12px; font-size: 11px;" title="Reset database to default members">
+                  <i data-lucide="rotate-ccw" style="width: 12px; height: 12px;"></i> Restore Seeds
+                </button>
+              </div>
+            </h2>
+
+            <!-- Form to add new ledger member, hidden by default -->
+            <div id="add-ledger-member-form-container"
+              style="display: none; border-bottom: 1px solid var(--border-color); padding-bottom: 16px; margin-bottom: 16px;"
+              class="animate-fade admin-only">
+              <form id="ledger-quick-add-form">
+                <div class="grid-form" style="margin-bottom: 12px;">
+                  <div class="form-group" style="margin-bottom: 0;">
+                    <label class="form-label">Resident Name</label>
+                    <input type="text" id="ledger-add-name" class="form-control" placeholder="e.g. Ramesh Kumar"
+                      required>
+                  </div>
+                  <div class="form-group" style="margin-bottom: 0;">
+                    <label class="form-label">Profession / Job</label>
+                    <input type="text" id="ledger-add-profession" class="form-control" placeholder="e.g. Teacher"
+                      required>
+                  </div>
+                </div>
+                <div class="grid-form" style="margin-bottom: 12px;">
+                  <div class="form-group" style="margin-bottom: 0;">
+                    <label class="form-label">Month</label>
+                    <select id="ledger-add-month" class="form-control" required>
+                      <!-- Dynamically populated -->
+                    </select>
+                  </div>
+                  <div class="form-group" style="margin-bottom: 0;">
+                    <label class="form-label">Payment Status</label>
+                    <select id="ledger-add-status" class="form-control" required>
+                      <option value="Paid">Paid (₹200)</option>
+                      <option value="Pending">Pending (₹200)</option>
+                    </select>
+                  </div>
+                </div>
+                <div style="display: flex; gap: 8px; justify-content: flex-end; margin-top: 12px;">
+                  <button type="button" id="cancel-ledger-add-btn" class="btn btn-secondary"
+                    style="padding: 6px 12px; font-size: 11px;">Cancel</button>
+                  <button type="submit" class="btn btn-primary" style="padding: 6px 12px; font-size: 11px;">Save
+                    Person</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Ledger Search & Filter -->
+            <div class="ledger-filter-bar"
+              style="display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; width: 100%;">
+              <div style="position: relative; flex-grow: 1; min-width: 150px;">
+                <input type="text" id="ledger-search" class="form-control" placeholder="Search by name or job..."
+                  style="padding-left: 36px; padding-top: 8px; padding-bottom: 8px;">
+                <i data-lucide="search"
+                  style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; color: var(--text-muted);"></i>
+              </div>
+              <select id="ledger-month-filter" class="form-control"
+                style="width: 155px; padding-top: 8px; padding-bottom: 8px; cursor: pointer;">
+                <!-- Dynamically populated -->
+              </select>
+              <select id="ledger-status-filter" class="form-control"
+                style="width: 130px; padding-top: 8px; padding-bottom: 8px; cursor: pointer;">
+                <option value="All">All Statuses</option>
+                <option value="Paid">Paid</option>
+                <option value="Pending">Pending</option>
+              </select>
+            </div>
+
+            <div class="ledger-table-container">
+              <table class="ledger-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="ledger_names">Youth Name</th>
+                    <th data-i18n="ledger_job">Job Title</th>
+                    <th data-i18n="ledger_month">Payment Month</th>
+                    <th data-i18n="ledger_status">Status</th>
+                    <th style="text-align: right;" class="admin-only" data-i18n="ledger_action">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="ledger-members-tbody">
+                  <!-- Rendered Dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- View 6: Grievance / Complaint Box -->
+      <section id="complaints-view" class="view-section animate-fade">
+        <div class="complaints-layout">
+
+          <!-- Left Column: Submit Complaint Form -->
+          <div class="glass-card">
+            <h2 class="section-card-title"><i data-lucide="pen-tool" class="text-primary"></i> Register a Grievance</h2>
+            <form id="grievance-form">
+              <div class="form-group">
+                <label class="form-label">Full Name of Resident</label>
+                <input type="text" id="complaint-username" class="form-control"
+                  placeholder="Enter name (e.g. Amit Singh)" required>
+              </div>
+
+              <div class="grid-form">
+                <div class="form-group">
+                  <label class="form-label">Ward Number</label>
+                  <input type="number" id="complaint-ward" class="form-control" placeholder="1 to 10" min="1" max="10" 
+                    inputmode="numeric" pattern="[0-9]*" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Category</label>
+                  <select id="complaint-category" class="form-control" required>
+                    <option value="Electricity">Electricity supply</option>
+                    <option value="Water">Drinking Water line</option>
+                    <option value="Streetlights">Streetlights maintenance</option>
+                    <option value="Roads">Potholes / Road Repair</option>
+                    <option value="Sanitation">Sewage &amp; Waste cleanup</option>
+                    <option value="Other">Other Issues</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Grievance Description Details</label>
+                <textarea id="complaint-desc" class="form-control" rows="4"
+                  placeholder="Detail your complaint (e.g. Substation transformer spark or street lamp broken in ward 3)..."
+                  required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary"
+                style="width: 100%; justify-content: center; margin-top: 12px;">
+                <i data-lucide="send"></i> Submit Complaint
+              </button>
+            </form>
+          </div>
+
+          <!-- Right Column: Track Complaint Status list -->
+          <div class="glass-card flex flex-col">
+            <h2 class="section-card-title" style="justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+              <span style="display: flex; align-items: center; gap: 10px;">
+                <i data-lucide="list" class="text-secondary"></i> Active Grievances
+              </span>
+              <button id="export-complaints-btn" class="btn btn-secondary admin-only"
+                style="padding: 6px 12px; font-size: 11px;" title="Export complaints to CSV">
+                <i data-lucide="download" style="width: 12px; height: 12px;"></i> Export CSV
+              </button>
+            </h2>
+
+            <!-- Grievance Filter Bar -->
+            <div class="grievance-filter-bar"
+              style="display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; width: 100%;">
+              <div style="position: relative; flex-grow: 1; min-width: 150px;">
+                <input type="text" id="complaint-search" class="form-control" placeholder="Search by name, ID, or ward..."
+                  style="padding-left: 36px; padding-top: 8px; padding-bottom: 8px; font-size: 12px; height: 100%;">
+                <i data-lucide="search"
+                  style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; color: var(--text-muted);"></i>
+              </div>
+              <button class="btn btn-secondary filter-status-btn active" data-status="all"
+                style="padding: 6px 12px; font-size: 11px;">All</button>
+              <button class="btn btn-secondary filter-status-btn" data-status="pending"
+                style="padding: 6px 12px; font-size: 11px;">Pending</button>
+              <button class="btn btn-secondary filter-status-btn" data-status="progress"
+                style="padding: 6px 12px; font-size: 11px;">In Progress</button>
+              <button class="btn btn-secondary filter-status-btn" data-status="resolved"
+                style="padding: 6px 12px; font-size: 11px;">Resolved</button>
+            </div>
+
+            <div class="complaints-list" id="complaints-list-container">
+              <!-- Rendered Dynamically -->
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- View 7: Emergency Directory -->
+      <section id="contacts-view" class="view-section animate-fade">
+        <div style="display: flex; justify-content: flex-end; width: 100%; margin-bottom: 16px;" class="admin-only">
+          <button id="add-contact-btn" class="btn btn-primary">
+            <i data-lucide="plus"></i> Add Contact Card
+          </button>
+        </div>
+
+        <!-- Form to add contact, hidden by default -->
+        <div id="add-contact-form-container" style="display: none; width: 100%; margin-bottom: 24px;"
+          class="glass-card animate-fade admin-only">
+          <h3 class="section-card-title"><i data-lucide="phone"></i> Add Emergency Contact</h3>
+          <form id="contact-addition-form">
+            <div class="form-group">
+              <label class="form-label">Contact / Center Name</label>
+              <input type="text" id="contact-name" class="form-control" placeholder="e.g. Primary Health Sub-Center"
+                required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Role / Category</label>
+              <input type="text" id="contact-role" class="form-control" placeholder="e.g. Medical Emergencies" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" id="contact-phone" class="form-control" placeholder="e.g. +91 12345 67890" inputmode="tel" required>
+            </div>
+            <div style="display: flex; gap: 8px; justify-content: flex-end;">
+              <button type="button" id="cancel-contact-btn" class="btn btn-secondary"
+                style="padding: 6px 12px; font-size: 11px;">Cancel</button>
+              <button type="submit" class="btn btn-primary" style="padding: 6px 12px; font-size: 11px;">Save
+                Contact</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Village Panchayat Map -->
+        <div class="glass-card animate-fade" style="margin-bottom: 24px; padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+          <div style="padding: 16px 24px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; gap: 10px;">
+            <i data-lucide="map-pin" class="text-primary"></i>
+            <h3 style="font-size: 16px; font-weight: 700; color: var(--text-primary);">Village Panchayat Office Location</h3>
+          </div>
+          <div style="width: 100%; height: 300px; background: rgba(0,0,0,0.1);">
+            <iframe 
+              src="https://maps.google.com/maps?q=Chipparapalle,+Penumur,+Andhra+Pradesh+517126&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+          </div>
+        </div>
+
+        <div class="contacts-layout-grid" id="contacts-grid-container">
+          <!-- Rendered Dynamically -->
+        </div>
+      </section>
+
+      <!-- View 8: Payment Gateway Section -->
+      <section id="payment-view" class="view-section animate-fade">
+        <div style="display: flex; justify-content: center; align-items: flex-start; padding-top: 24px; width: 100%;">
+          <div class="glass-card payment-card" style="width: 100%; max-width: 400px; text-align: center;">
+            
+            <!-- Success Animation Container (Hidden by default) -->
+            <div id="payment-success-animation" style="display: none; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px;">
+              <div class="success-checkmark">
+                <i data-lucide="check" style="width: 48px; height: 48px; color: white;"></i>
+              </div>
+              <h3 style="font-size: 24px; font-weight: 800; color: var(--text-primary); margin-top: 16px;">Payment Successful!</h3>
+              <p style="color: var(--text-secondary); font-size: 14px; margin-top: 8px;">Thank you for your contribution.</p>
+            </div>
+
+            <!-- Payment Form Content -->
+            <div id="payment-form-content">
+              <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 8px;">Select Payment Method</h2>
+              <p style="color: var(--text-secondary); font-size: 13px;">Choose how you want to pay your contribution</p>
+              
+              <div id="payment-person-info" style="font-size: 13px; font-weight: 600; color: var(--text-primary); margin-top: 16px; background: rgba(0,0,0,0.1); border: 1px solid var(--border-color); padding: 10px; border-radius: 8px;">
+                <!-- Populated dynamically -->
+              </div>
+
+              <div style="font-size: 24px; font-weight: 800; color: var(--primary); margin: 16px 0;" id="payment-amount-display">
+                ₹200
+              </div>
+
+              <!-- Payment Options -->
+              <div class="payment-options" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; text-align: left;">
+                <label class="payment-option-label" style="display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; cursor: pointer;">
+                  <input type="radio" name="payment_method" value="upi" checked>
+                  <i data-lucide="qr-code"></i> Scan QR Code / UPI
+                </label>
+                <label class="payment-option-label" style="display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; cursor: pointer;">
+                  <input type="radio" name="payment_method" value="card">
+                  <i data-lucide="credit-card"></i> Credit / Debit Card
+                </label>
+                <label class="payment-option-label" style="display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; cursor: pointer;">
+                  <input type="radio" name="payment_method" value="netbanking">
+                  <i data-lucide="building"></i> Net Banking
+                </label>
+              </div>
+
+              <!-- Dynamic Payment Details Area -->
+              <div id="payment-details-area" style="margin-bottom: 24px;">
+                <!-- UPI Default -->
+                <div id="pay-upi-details" class="pay-detail-section active">
+                  <!-- Dynamic Scannable QR Code -->
+                  <div class="qr-mock" style="width: 140px; height: 140px; margin: 0 auto; padding: 10px; background: white; border-radius: 8px;">
+                    <img id="dynamic-upi-qr" src="" alt="Dynamic UPI QR Code" style="width: 100%; height: 100%; object-fit: contain;">
+                  </div>
+                  <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">Scan with any UPI app (GPay, PhonePe, Paytm)</p>
+                
+                <div style="display: flex; justify-content: center; margin-top: 12px; gap: 8px; flex-wrap: wrap;">
+                  <a id="upi-deep-link-btn" href="#" class="btn btn-primary" style="padding: 6px 12px; font-size: 11px; text-decoration: none;" title="Open GPay/PhonePe">
+                    <i data-lucide="external-link" style="width: 14px; height: 14px;"></i> Open UPI App
+                  </a>
+                  <button id="copy-upi-btn" class="btn btn-secondary" style="padding: 6px 12px; font-size: 11px;">
+                    <i data-lucide="copy" style="width: 14px; height: 14px;"></i> Copy UPI ID
+                  </button>
+                  <button id="edit-upi-name-btn" class="btn btn-secondary admin-only" style="padding: 6px 12px; font-size: 11px;" title="Update UPI Receiver Name">
+                    <i data-lucide="edit-3" style="width: 14px; height: 14px;"></i> Edit Name
+                  </button>
+                </div>
+                </div>
+                <!-- Card Default -->
+                <div id="pay-card-details" class="pay-detail-section" style="display: none; text-align: left;">
+                  <input type="text" id="card-number" class="form-control" placeholder="Card Number (16 digits)" inputmode="numeric" pattern="[0-9\s]*" style="margin-bottom: 10px;">
+                  <div style="display: flex; gap: 10px;">
+                    <input type="text" id="card-expiry" class="form-control" placeholder="MM/YY" inputmode="numeric" style="width: 50%;">
+                    <input type="password" id="card-cvv" class="form-control" placeholder="CVV" inputmode="numeric" pattern="[0-9]*" style="width: 50%;">
+                  </div>
+                </div>
+                <!-- NetBanking Default -->
+                <div id="pay-netbanking-details" class="pay-detail-section" style="display: none; text-align: left;">
+                  <select id="netbanking-bank" class="form-control" style="cursor: pointer;">
+                    <option disabled selected>Select your Bank</option>
+                    <option>State Bank of India</option>
+                    <option>HDFC Bank</option>
+                    <option>ICICI Bank</option>
+                    <option>Axis Bank</option>
+                    <option>Punjab National Bank</option>
+                    <option>Gramin Bank</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 12px; justify-content: center;">
+                <button class="btn btn-secondary" id="cancel-payment-btn">Cancel</button>
+                <button class="btn btn-primary" id="confirm-payment-btn">
+                  <i data-lucide="shield-check"></i> Proceed to Pay
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Gallery Lightbox Modal -->
+  <div id="gallery-lightbox" class="lightbox-modal" style="display: none;">
+    <span class="lightbox-close">&times;</span>
+    <a id="lightbox-download-btn" class="lightbox-download" href="#" download="Village_Photo.jpg" title="Download Image">
+      <i data-lucide="download"></i>
+    </a>
+    <button class="lightbox-nav prev-btn" id="lightbox-prev" title="Previous Image"><i
+        data-lucide="chevron-left"></i></button>
+    <div class="lightbox-content-wrapper">
+      <img class="lightbox-content" id="lightbox-img" src="" alt="">
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+    <button class="lightbox-nav next-btn" id="lightbox-next" title="Next Image"><i
+        data-lucide="chevron-right"></i></button>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top-btn" class="back-to-top-btn" aria-label="Back to Top">
+    <i data-lucide="arrow-up"></i>
+  </button>
+
+  <!-- Toast Notifications Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Lucide Development Library and Custom App logic -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  
+  <!-- Firebase App & Auth SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+  <!-- Google Translate Engine -->
+  <div id="google_translate_element" style="display:none;"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() { new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'te,en', autoDisplay: false}, 'google_translate_element'); }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <!-- Modular Application Scripts -->
+  <script src="data.js"></script>
+  <script src="core.js"></script>
+  <script src="news.js"></script>
+  <script src="schemes.js"></script>
+  <script src="contacts.js"></script>
+  <script src="complaints.js"></script>
+  <script src="gallery.js"></script>
+  <script src="ledger.js"></script>
+  <script src="payment.js"></script>
+  <script src="app.js"></script>
+
+  <!-- Admin Login Modal -->
+  <div id="admin-login-modal" class="lightbox-modal" style="display: none; align-items: center; justify-content: center;">
+    <div class="glass-card" style="width: 100%; max-width: 380px; position: relative; padding-top: 40px; margin: 20px;">
+      <span id="close-login-modal" style="position: absolute; top: 16px; right: 24px; cursor: pointer; font-size: 28px; color: var(--text-secondary); line-height: 1; transition: color 0.2s ease;">&times;</span>
+      <h2 class="section-card-title" style="border: none; padding-bottom: 0; margin-bottom: 24px; justify-content: center;">
+        <i data-lucide="shield-alert" class="text-primary"></i> Admin Login
+      </h2>
+      <form id="admin-login-form">
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" id="admin-email" class="form-control" placeholder="admin@gramseva.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" id="admin-password" class="form-control" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 16px;">
+          Secure Login
+        </button>
+        <a href="#" id="forgot-password-btn" style="font-size: 12px; color: var(--primary); text-align: center; display: block; margin-top: 12px; text-decoration: none;">Forgot Password?</a>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

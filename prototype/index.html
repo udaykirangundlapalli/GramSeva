@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore GramSeva’s village gateway for transparent news, government scheme tracking, grievance support, and community ledger oversight.">
+  <meta property="og:title" content="Welcome to GramSeva" />
+  <meta property="og:description" content="Step into the portal for village transparency and administration." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#031305" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#5e789a" media="(prefers-color-scheme: light)">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>Welcome to GramSeva – Village Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="landing-page">
+  <main>
+    <section class="landing-container">
+      <div class="landing-toolbar" style="display: flex; gap: 12px;">
+        <button id="index-lang-toggle-btn" class="theme-toggle-btn" type="button" aria-label="Toggle language" style="padding: 8px 16px; min-width: 80px;">తెలుగు</button>
+        <button id="theme-toggle-btn" class="theme-toggle-btn icon-only" type="button" aria-label="Toggle light and dark theme">☀️</button>
+      </div>
+      <div class="landing-panel">
+      <div class="landing-copy">
+        <div class="landing-brand">
+          <span class="brand-icon" aria-hidden="true">🌱</span>
+          <div>
+            <h1 class="brand-title">Welcome to GramSeva</h1>
+            <p class="brand-badge">Village administration, made clear and connected.</p>
+          </div>
+        </div>
+        <p class="brand-subtitle">Your digital gateway to village transparency, government support, and community-led administration.</p>
+        <p class="landing-description">Explore a smart portal built for village leaders, residents, and administrators to access news, schemes, grievances, and ledger insights in one welcoming hub.</p>
+        <div class="landing-cta-group">
+          <a class="landing-enter-btn" href="portal.html" aria-label="Enter the GramSeva village portal">Enter Village Portal</a>
+          <a class="landing-secondary-btn" href="#features" aria-label="Learn more about GramSeva">Learn More</a>
+        </div>
+        <div class="landing-stats-bar" aria-label="Active systems overview">
+          <div class="landing-stat">
+            <span class="landing-stat-title">Live News</span>
+            <span class="landing-stat-value">Village stories</span>
+          </div>
+          <div class="landing-stat">
+            <span class="landing-stat-title">Scheme Tracker</span>
+            <span class="landing-stat-value">Policy updates</span>
+          </div>
+          <div class="landing-stat">
+            <span class="landing-stat-title">Community Feedback</span>
+            <span class="landing-stat-value">Grievance support</span>
+          </div>
+          <div class="landing-stat">
+            <span class="landing-stat-title">Transparent Ledger</span>
+            <span class="landing-stat-value">Accountable records</span>
+          </div>
+        </div>
+        <p class="landing-trust">Trusted by village leaders, residents, and administrative teams.</p>
+      </div>
+
+      <div class="landing-hero">
+        <div class="landing-hero-img">
+          <img src="village_temple.png" alt="Illustration of a glowing village temple gateway" loading="eager">
+          <div class="landing-hero-overlay"></div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- Features Section to support the 'Learn More' navigation -->
+    <section id="features" class="features-section">
+      <h2 class="features-title">Empowering the Village Community</h2>
+      <div class="features-grid-layout">
+        <div class="feature-card glass-card">
+          <div class="feature-icon">📰</div>
+          <h3>Village News</h3>
+          <p>Stay updated with local announcements, newsletters, and warnings.</p>
+        </div>
+        <div class="feature-card glass-card">
+          <div class="feature-icon">⚖️</div>
+          <h3>Schemes & Grants</h3>
+          <p>Access and apply for government welfare schemes transparently.</p>
+        </div>
+        <div class="feature-card glass-card">
+          <div class="feature-icon">📢</div>
+          <h3>Grievance Box</h3>
+          <p>Report civic issues and track resolution progress directly online.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="landing-footer">
+    <p>&copy; 2026 GramSeva Portal. Built for community transparency.</p>
+  </footer>
+
+  <script>
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
+    const root = document.body;
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'light') {
+      root.classList.add('light-mode');
+    }
+    function updateThemeLabel() {
+      if (root.classList.contains('light-mode')) {
+        themeToggleBtn.textContent = '🌙';
+      } else {
+        themeToggleBtn.textContent = '☀️';
+      }
+    }
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        root.classList.toggle('light-mode');
+        localStorage.setItem('theme', root.classList.contains('light-mode') ? 'light' : 'dark');
+        updateThemeLabel();
+      });
+      updateThemeLabel();
+    }
+
+    // Language Toggle Logic (Google Translate Integration)
+    const indexLangToggleBtn = document.getElementById('index-lang-toggle-btn');
+    if (document.cookie.includes('googtrans=/en/te')) {
+      if (indexLangToggleBtn) indexLangToggleBtn.textContent = 'English';
+      document.documentElement.lang = 'te';
+    }
+    if (indexLangToggleBtn) {
+      indexLangToggleBtn.addEventListener('click', () => {
+        if (document.cookie.includes('googtrans=/en/te')) {
+          document.cookie = 'googtrans=/en/en; path=/';
+        } else {
+          document.cookie = 'googtrans=/en/te; path=/';
+        }
+        window.location.reload();
+      });
+    }
+  </script>
+  
+  <!-- Google Translate Engine -->
+  <div id="google_translate_element" style="display:none;"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() { new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'te,en', autoDisplay: false}, 'google_translate_element'); }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
+</html>
