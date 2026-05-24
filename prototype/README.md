@@ -1,6 +1,6 @@
 <div align="center">
   <!-- Project banner. Make sure to add banner.png to your assets folder! -->
-  <img src="assets/banner.png" alt="GramSeva Banner" width="800">
+  <img src="./assets/banner.png" alt="GramSeva Banner" width="800">
   
   <h1>GramSeva Village Portal 🌾</h1>
   
@@ -39,11 +39,11 @@
 
 | Dashboard Overview | Grievance Redressal |
 | :---: | :---: |
-| <img src="assets/dashboard.png" alt="Dashboard Overview Screenshot" width="400"> | <img src="assets/complaints.png" alt="Grievance Redressal Screenshot" width="400"> |
+| <a href="./assets/dashboard.png"><img src="./assets/dashboard.png" alt="Dashboard Overview Screenshot" width="400"></a> | <a href="./assets/complaints.png"><img src="./assets/complaints.png" alt="Grievance Redressal Screenshot" width="400"></a> |
 
 | Youth Contribution Ledger | Government Schemes |
 | :---: | :---: |
-| <img src="assets/ledger.png" alt="Youth Contribution Ledger Screenshot" width="400"> | <img src="assets/schemes.png" alt="Government Schemes Tracker Screenshot" width="400"> |
+| <a href="./assets/ledger.png"><img src="./assets/ledger.png" alt="Youth Contribution Ledger Screenshot" width="400"></a> | <a href="./assets/schemes.png"><img src="./assets/schemes.png" alt="Government Schemes Tracker Screenshot" width="400"></a> |
 
 ---
 
