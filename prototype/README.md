@@ -39,11 +39,11 @@
 
 | Dashboard Overview | Grievance Redressal |
 | :---: | :---: |
-| <a href="./assets/dashboard.png"><img src="./assets/dashboard.png" alt="Dashboard Overview Screenshot" width="400"></a> | <a href="./assets/complaints.png"><img src="./assets/complaints.png" alt="Grievance Redressal Screenshot" width="400"></a> |
+| [![Dashboard Overview Screenshot](./assets/dashboard.png)](./assets/dashboard.png) | [![Grievance Redressal Screenshot](./assets/complaints.png)](./assets/complaints.png) |
 
 | Youth Contribution Ledger | Government Schemes |
 | :---: | :---: |
-| <a href="./assets/ledger.png"><img src="./assets/ledger.png" alt="Youth Contribution Ledger Screenshot" width="400"></a> | <a href="./assets/schemes.png"><img src="./assets/schemes.png" alt="Government Schemes Tracker Screenshot" width="400"></a> |
+| [![Youth Contribution Ledger Screenshot](./assets/ledger.png)](./assets/ledger.png) | [![Government Schemes Tracker Screenshot](./assets/schemes.png)](./assets/schemes.png) |
 
 ---
 
