@@ -1,6 +1,6 @@
 <div align="center">
-  <!-- Placeholder for a project banner. You can replace this URL with your own image later! -->
-  <img src="https://via.placeholder.com/800x200/4CAF50/FFFFFF?text=GramSeva+Village+Portal" alt="GramSeva Banner">
+  <!-- Project banner. Make sure to add banner.png to your assets folder! -->
+  <img src="assets/banner.png" alt="GramSeva Banner" width="800">
   
   <h1>GramSeva Village Portal 🌾</h1>
   
@@ -35,15 +35,15 @@
 
 ## 📸 Screenshots
 
-> **Note:** Create a folder named `docs` or `assets` in your repo and replace these placeholder URLs with paths to your actual screenshots (e.g., `assets/dashboard.png`).
+> **Note:** Please create an `assets` folder in your repository root and add your actual screenshots (`dashboard.png`, `complaints.png`, `ledger.png`, and `schemes.png`) to display them below.
 
 | Dashboard Overview | Grievance Redressal |
 | :---: | :---: |
-| <img src="https://via.placeholder.com/400x250?text=Dashboard+Screenshot" alt="Dashboard"> | <img src="https://via.placeholder.com/400x250?text=Complaint+System" alt="Complaints"> |
+| <img src="assets/dashboard.png" alt="Dashboard Overview Screenshot" width="400"> | <img src="assets/complaints.png" alt="Grievance Redressal Screenshot" width="400"> |
 
 | Youth Contribution Ledger | Government Schemes |
 | :---: | :---: |
-| <img src="https://via.placeholder.com/400x250?text=Financial+Ledger" alt="Ledger"> | <img src="https://via.placeholder.com/400x250?text=Schemes+Tracker" alt="Schemes"> |
+| <img src="assets/ledger.png" alt="Youth Contribution Ledger Screenshot" width="400"> | <img src="assets/schemes.png" alt="Government Schemes Tracker Screenshot" width="400"> |
 
 ---
 
